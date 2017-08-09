@@ -33,12 +33,30 @@ void setup(/* arguments */) {
   setup_interrupt(); // setup interupt after connected to server.
 }
 
+// ------- Exectime Start Calc ------
+unsigned int start_time = 0;
+// start_time = micros();
+// ------- Exectime Start Calc ------
+// int count = 12001;
 void loop() {
-  if (read_buffer.size() > 0){ // check if buffer has filling
+  if (read_buffer.size() > 0 ){ // check if buffer has element
+        // && count > 0){ // ------- Exectime Flag Calc ------
+    // // ------- Exectime Start Calc ------
+    // unsigned int start_time = 0;
+    // start_time = micros();
+    // // ------- Exectime Start Calc ------
+
     int sample = read_buffer.front(); // get first data
 
     connector.publish(sample); // send via mqtt
     read_buffer.pop(); // pop first element
+
+    // // ------- Exectime Stop Calc ------
+    // unsigned int stop_time = micros();
+    // Serial.println(stop_time - start_time);
+    // start_time = stop_time;
+    // count -= 1;
+    // // ------- Exectime Stop Calc ------
 
     // // ------Buffer Check-----
     // char str_temp[6]; // char of sample

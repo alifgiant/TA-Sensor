@@ -37,7 +37,7 @@ std::string Connector::buildMessage(int sample){
   char message[10]; // message buffer
   sprintf (message, "%d:%d", index, sample);
   index += 1; // increase index
-  if (index > INDEX_LIMIT) index = 0;  // reset index
+  if (index > INDEX_LIMIT) index = 1;  // reset index
   return message;
 }
 
